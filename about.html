@@ -5,31 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - ClassyTeez</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
             <a href="index.html" class="logo">Classy<span>Teez</span></a>
-            <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="about.html" class="active">About</a>
-                <a href="products.html">Products</a>
-                <a href="gallery.html">Gallery</a>
-                <a href="contact.html">Contact</a>
+            <div class="menu-toggle">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
             </div>
-            <div class="hamburger">
-                <div class="line"></div>
-                <div class="line"></div>
-                <div class="line"></div>
-            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
         </div>
     </nav>
 
     <!-- About Hero -->
-    <section class="page-hero" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/about.jpg');">
+    <section class="page-hero about-hero">
         <div class="container">
             <h1>About ClassyTeez</h1>
             <p>Our story, mission, and the values that drive us</p>
@@ -39,84 +40,153 @@
     <!-- About Content -->
     <section class="about-content">
         <div class="container">
-            <div class="about-text">
-                <h2>Our Story</h2>
-                <p>Founded with a passion for quality and style, ClassyTeez has been providing premium uniforms and corporate gifting solutions to businesses across Bangalore and beyond. What started as a small venture has grown into a trusted name in corporate apparel and gifting.</p>
-                <p>Our journey began with a simple idea: to help businesses present their teams with professional, high-quality uniforms that reflect their brand identity. Over the years, we've expanded our offerings to include a wide range of corporate gifting solutions that help companies strengthen their relationships with clients and employees.</p>
-                
-                <h2>Our Mission</h2>
-                <p>To deliver exceptional quality uniforms and corporate gifts that enhance brand image, foster team unity, and create lasting impressions. We believe that what you wear and give speaks volumes about your brand, and we're committed to helping you make the right statement.</p>
-                
-                <h2>Our Vision</h2>
-                <p>To become the most trusted partner for corporate uniforms and gifting solutions in India, known for our uncompromising quality, innovative designs, and exceptional customer service.</p>
-            </div>
-            
-            <div class="trusted-brands">
-                <h2>Trusted Fabric Brands</h2>
-                <div class="brands-grid">
-                    <div class="brand-card">
-                        <div class="brand-icon">
-                            <i class="fas fa-certificate"></i>
-                        </div>
-                        <h3>Raymond</h3>
-                    </div>
-                    <div class="brand-card">
-                        <div class="brand-icon">
-                            <i class="fas fa-certificate"></i>
-                        </div>
-                        <h3>Siyarams</h3>
-                    </div>
-                    <div class="brand-card">
-                        <div class="brand-icon">
-                            <i class="fas fa-certificate"></i>
-                        </div>
-                        <h3>BSL</h3>
-                    </div>
-                    <div class="brand-card">
-                        <div class="brand-icon">
-                            <i class="fas fa-certificate"></i>
-                        </div>
-                        <h3>Mafatlal</h3>
+            <div class="about-grid">
+                <div class="about-text">
+                    <h2>Our Story</h2>
+                    <p>Founded in 2015, ClassyTeez began as a small tailoring unit with a vision to revolutionize corporate uniforms and gifting in Bangalore. What started as a passion for quality craftsmanship has grown into a trusted name serving over 200 corporate clients across India.</p>
+                    <p>Our journey has been marked by continuous innovation, an unwavering commitment to quality, and a deep understanding of our clients' branding needs. Today, we're proud to be the preferred choice for organizations looking to make a lasting impression through their corporate attire and gifting solutions.</p>
+                </div>
+                <div class="about-image">
+                    <div class="image-frame">
+                        <img src="images/about-story.jpg" alt="Our Story">
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Mission Section -->
+    <section class="mission-section">
+        <div class="container">
+            <div class="mission-grid">
+                <div class="mission-card">
+                    <div class="mission-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>Our Vision</h3>
+                    <p>To become the most trusted brand in corporate uniforms and gifting by delivering exceptional quality, innovative designs, and outstanding customer service.</p>
+                </div>
+                <div class="mission-card">
+                    <div class="mission-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>Our Mission</h3>
+                    <p>To help businesses enhance their brand identity through premium quality uniforms and corporate gifts that reflect professionalism and excellence.</p>
+                </div>
+                <div class="mission-card">
+                    <div class="mission-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Our Values</h3>
+                    <p>Quality craftsmanship, customer satisfaction, ethical business practices, and continuous innovation are the cornerstones of our operations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fabric Brands -->
+    <section class="fabric-brands">
+        <div class="container">
+            <div class="section-header">
+                <h2>Trusted Fabric Brands</h2>
+                <p>We partner with the finest fabric manufacturers to ensure premium quality</p>
+            </div>
+            <div class="brands-grid">
+                <div class="brand-card">
+                    <img src="images/raymond-logo.png" alt="Raymond">
+                </div>
+                <div class="brand-card">
+                    <img src="images/siyarams-logo.png" alt="Siyarams">
+                </div>
+                <div class="brand-card">
+                    <img src="images/bsl-logo.png" alt="BSL">
+                </div>
+                <div class="brand-card">
+                    <img src="images/mafatlal-logo.png" alt="Mafatlal">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Meet Our Founder</h2>
+                <p>The driving force behind ClassyTeez</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="images/founder.jpg" alt="Shilpa Shree">
+                    </div>
+                    <div class="team-info">
+                        <h3>Shilpa Shree</h3>
+                        <span>Founder & CEO</span>
+                        <p>With over 15 years of experience in the textile and apparel industry, Shilpa brings a unique blend of creative vision and business acumen to ClassyTeez. Her passion for quality and customer satisfaction is the foundation of our company's success.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>ClassyTeez</h3>
+                    <p>Uniforms & Corporate Gifting solutions that make an impression. Quality, style, and professionalism in every product.</p>
+                    <!--
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                    -->
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Products</h3>
+                    <ul>
+                        <li><a href="products.html#tshirts">Promotional T-Shirts</a></li>
+                        <li><a href="products.html#hoodies">Hoodies</a></li>
+                        <li><a href="products.html#shirts">Formal Shirts</a></li>
+                        <li><a href="products.html#blazers">Blazers</a></li>
+                        <li><a href="products.html#gifting">Corporate Gifting</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> 97408 50480 / 93411 55280</li>
+                        <li><i class="fas fa-envelope"></i> classyteez.ans@gmail.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> #7, Shubh Arcade, Janatha Colony, Opp. RGA Tech Park, Near Carmelaram, Doddakannelli, Bengaluru - 560035</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 ClassyTeez. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
     <!-- WhatsApp Float -->
     <a href="https://wa.me/919740850480" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-section">
-                <h3>ClassyTeez</h3>
-                <p>Uniforms & Corporate Gifting solutions that elevate your brand identity and professionalism.</p>
-            </div>
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="products.html">Products</a></li>
-                    <li><a href="gallery.html">Gallery</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Contact Info</h3>
-                <p><i class="fas fa-phone"></i> 97408 50480 / 93411 55280</p>
-                <p><i class="fas fa-envelope"></i> classyteez.ans@gmail.com</p>
-                <p><i class="fas fa-map-marker-alt"></i> #7, Shubh Arcade, Janatha Colony, Bengaluru - 560035</p>
-            </div>
-        </div>
-        <div class="copyright">
-            <p>&copy; 2023 ClassyTeez. All Rights Reserved.</p>
-        </div>
-    </footer>
-
-    <script src="js/script.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/animations.js"></script>
 </body>
 </html>

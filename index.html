@@ -5,120 +5,256 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ClassyTeez - Uniforms & Corporate Gifting</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
             <a href="index.html" class="logo">Classy<span>Teez</span></a>
-            <div class="nav-links">
-                <a href="index.html" class="active">Home</a>
-                <a href="about.html">About</a>
-                <a href="products.html">Products</a>
-                <a href="gallery.html">Gallery</a>
-                <a href="contact.html">Contact</a>
+            <div class="menu-toggle">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
             </div>
-            <div class="hamburger">
-                <div class="line"></div>
-                <div class="line"></div>
-                <div class="line"></div>
-            </div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
         </div>
     </nav>
 
-    <!-- Hero Banner -->
+    <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-slider">
-            <div class="slide active" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/banner1.jpg');">
-                <div class="container">
-                    <h1>Premium Uniforms & Corporate Gifting</h1>
-                    <p>Elevate your brand with our high-quality custom apparel and thoughtful corporate gifts</p>
-                    <div class="cta-buttons">
-                        <a href="products.html" class="btn primary">View Products</a>
-                        <a href="contact.html" class="btn secondary">Contact Us</a>
-                    </div>
-                </div>
-            </div>
-            <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/banner2.jpg');">
-                <div class="container">
-                    <h1>Tailored to Your Brand Identity</h1>
-                    <p>Custom designs that reflect your company's values and professionalism</p>
-                    <div class="cta-buttons">
-                        <a href="products.html" class="btn primary">View Products</a>
-                        <a href="contact.html" class="btn secondary">Contact Us</a>
-                    </div>
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title animate-pop-in">Uniforms & Corporate Gifting</h1>
+                <p class="hero-subtitle animate-pop-in">Elevate your corporate identity with our premium quality uniforms and gifting solutions</p>
+                <div class="hero-buttons animate-pop-in">
+                    <a href="products.html" class="btn btn-primary">View Products</a>
+                    <a href="contact.html" class="btn btn-secondary">Contact Us</a>
                 </div>
             </div>
         </div>
-        <div class="slider-dots">
-            <span class="dot active"></span>
-            <span class="dot"></span>
+        <div class="hero-scroll">
+            <span>Scroll Down</span>
+            <div class="scroll-arrow"></div>
         </div>
     </section>
 
     <!-- Features Section -->
     <section class="features">
         <div class="container">
-            <div class="feature-card">
-                <div class="icon">
-                    <i class="fas fa-trophy"></i>
-                </div>
-                <h3>Premium Quality</h3>
-                <p>Using fabrics from Raymond, Siyarams, BSL and other trusted brands</p>
+            <div class="section-header">
+                <h2>Why Choose ClassyTeez</h2>
+                <p>We deliver excellence in every stitch</p>
             </div>
-            <div class="feature-card">
-                <div class="icon">
-                    <i class="fas fa-tshirt"></i>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3>Premium Quality</h3>
+                    <p>Using only the finest fabrics from trusted brands like Raymond and Siyarams.</p>
                 </div>
-                <h3>Custom Tailoring</h3>
-                <p>Perfect fit and finish for all uniforms and corporate wear</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">
-                    <i class="fas fa-gift"></i>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-tshirt"></i>
+                    </div>
+                    <h3>Custom Tailoring</h3>
+                    <p>Perfect fit guaranteed with our expert tailoring and customization options.</p>
                 </div>
-                <h3>Thoughtful Gifting</h3>
-                <p>Custom corporate gifts that leave a lasting impression</p>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <h3>Corporate Gifting</h3>
+                    <p>Elegant gifting solutions that leave a lasting impression.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3>Timely Delivery</h3>
+                    <p>We respect deadlines and ensure on-time delivery every time.</p>
+                </div>
             </div>
         </div>
     </section>
+
+    <!-- Product Showcase -->
+    <section class="product-showcase">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Product Range</h2>
+                <p>Explore our diverse collection</p>
+            </div>
+            <div class="showcase-grid">
+                <div class="showcase-item">
+                    <div class="showcase-image">
+                        <img src="images/tshirt-showcase.jpg" alt="Promotional T-Shirts">
+                        <div class="showcase-overlay"></div>
+                    </div>
+                    <h3>Promotional T-Shirts</h3>
+                    <a href="products.html#tshirts" class="btn btn-outline">View More</a>
+                </div>
+                <div class="showcase-item">
+                    <div class="showcase-image">
+                        <img src="images/shirt-showcase.jpg" alt="Formal Shirts">
+                        <div class="showcase-overlay"></div>
+                    </div>
+                    <h3>Formal Shirts</h3>
+                    <a href="products.html#shirts" class="btn btn-outline">View More</a>
+                </div>
+                <div class="showcase-item">
+                    <div class="showcase-image">
+                        <img src="images/blazer-showcase.jpg" alt="Blazers">
+                        <div class="showcase-overlay"></div>
+                    </div>
+                    <h3>Blazers</h3>
+                    <a href="products.html#blazers" class="btn btn-outline">View More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>What Our Clients Say</h2>
+                <p>Trusted by leading organizations</p>
+            </div>
+            <div class="testimonial-slider">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="quote-icon">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <p>ClassyTeez delivered exceptional quality uniforms for our entire staff. The attention to detail and timely delivery was impressive.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                            <img src="images/client1.jpg" alt="Client">
+                        </div>
+                        <div class="author-info">
+                            <h4>Rajesh Kumar</h4>
+                            <span>HR Manager, Tech Solutions Inc.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="quote-icon">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <p>Our corporate gifting needs were perfectly handled by ClassyTeez. The customized gift boxes were a huge hit with our clients.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                            <img src="images/client2.jpg" alt="Client">
+                        </div>
+                        <div class="author-info">
+                            <h4>Priya Sharma</h4>
+                            <span>Marketing Director, Global Finance</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="quote-icon">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <p>The formal shirts we ordered had perfect stitching and fabric quality. Will definitely be ordering again for our next corporate event.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                            <img src="images/client3.jpg" alt="Client">
+                        </div>
+                        <div class="author-info">
+                            <h4>Anil Patel</h4>
+                            <span>Operations Head, Retail Chain</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Elevate Your Corporate Style?</h2>
+                <p>Contact us today for a consultation and let's create something exceptional together.</p>
+                <a href="contact.html" class="btn btn-primary">Get In Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>ClassyTeez</h3>
+                    <p>Uniforms & Corporate Gifting solutions that make an impression. Quality, style, and professionalism in every product.</p>
+                    <!--
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                    -->
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Products</h3>
+                    <ul>
+                        <li><a href="products.html#tshirts">Promotional T-Shirts</a></li>
+                        <li><a href="products.html#hoodies">Hoodies</a></li>
+                        <li><a href="products.html#shirts">Formal Shirts</a></li>
+                        <li><a href="products.html#blazers">Blazers</a></li>
+                        <li><a href="products.html#gifting">Corporate Gifting</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> 97408 50480 / 93411 55280</li>
+                        <li><i class="fas fa-envelope"></i> classyteez.ans@gmail.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> #7, Shubh Arcade, Janatha Colony, Opp. RGA Tech Park, Near Carmelaram, Doddakannelli, Bengaluru - 560035</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 ClassyTeez. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
 
     <!-- WhatsApp Float -->
     <a href="https://wa.me/919740850480" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-section">
-                <h3>ClassyTeez</h3>
-                <p>Uniforms & Corporate Gifting solutions that elevate your brand identity and professionalism.</p>
-            </div>
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="products.html">Products</a></li>
-                    <li><a href="gallery.html">Gallery</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Contact Info</h3>
-                <p><i class="fas fa-phone"></i> 97408 50480 / 93411 55280</p>
-                <p><i class="fas fa-envelope"></i> classyteez.ans@gmail.com</p>
-                <p><i class="fas fa-map-marker-alt"></i> #7, Shubh Arcade, Janatha Colony, Bengaluru - 560035</p>
-            </div>
-        </div>
-        <div class="copyright">
-            <p>&copy; 2023 ClassyTeez. All Rights Reserved.</p>
-        </div>
-    </footer>
-
-    <script src="js/script.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/animations.js"></script>
 </body>
 </html>

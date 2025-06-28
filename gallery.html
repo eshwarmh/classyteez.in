@@ -5,165 +5,233 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gallery - ClassyTeez</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.1/css/lightgallery.min.css">
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
             <a href="index.html" class="logo">Classy<span>Teez</span></a>
-            <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="about.html">About</a>
-                <a href="products.html">Products</a>
-                <a href="gallery.html" class="active">Gallery</a>
-                <a href="contact.html">Contact</a>
+            <div class="menu-toggle">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
             </div>
-            <div class="hamburger">
-                <div class="line"></div>
-                <div class="line"></div>
-                <div class="line"></div>
-            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="gallery.html" class="active">Gallery</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
         </div>
     </nav>
 
     <!-- Gallery Hero -->
-    <section class="page-hero" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/gallery-banner.jpg');">
+    <section class="page-hero gallery-hero">
         <div class="container">
             <h1>Our Gallery</h1>
-            <p>Showcasing our work and client projects</p>
+            <p>Showcasing our work and craftsmanship</p>
         </div>
     </section>
 
     <!-- Gallery Section -->
     <section class="gallery-section">
         <div class="container">
-            <div class="section-intro">
-                <h2>Our Work Speaks for Itself</h2>
-                <p>Browse through our collection of completed projects and product samples to see the quality and craftsmanship we deliver.</p>
-            </div>
-            
             <div class="gallery-filter">
                 <button class="filter-btn active" data-filter="all">All</button>
                 <button class="filter-btn" data-filter="uniforms">Uniforms</button>
                 <button class="filter-btn" data-filter="gifting">Corporate Gifting</button>
                 <button class="filter-btn" data-filter="events">Events</button>
             </div>
-            
             <div class="gallery-grid">
-                <!-- Uniforms -->
-                <div class="gallery-item uniforms">
-                    <img src="images/gallery/uniform1.jpg" alt="Corporate Uniforms">
-                    <div class="overlay">
-                        <h3>Corporate Uniforms</h3>
-                        <p>Custom tailored uniforms for a leading IT company</p>
+                <a href="images/gallery1.jpg" class="gallery-item uniforms" data-sub-html="<h4>Corporate Uniforms</h4><p>Custom tailored uniforms for Tech Solutions Inc.</p>">
+                    <img src="images/gallery1-thumb.jpg" alt="Corporate Uniforms">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
                     </div>
-                </div>
-                <div class="gallery-item uniforms">
-                    <img src="images/gallery/uniform2.jpg" alt="Hospitality Wear">
-                    <div class="overlay">
-                        <h3>Hospitality Wear</h3>
-                        <p>Premium uniforms for a 5-star hotel chain</p>
+                </a>
+                <a href="images/gallery2.jpg" class="gallery-item gifting" data-sub-html="<h4>Festival Gift Hampers</h4><p>Custom packaged gift hampers for Diwali season</p>">
+                    <img src="images/gallery2-thumb.jpg" alt="Festival Gift Hampers">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
                     </div>
-                </div>
-                <div class="gallery-item uniforms">
-                    <img src="images/gallery/uniform3.jpg" alt="Formal Shirts">
-                    <div class="overlay">
-                        <h3>Formal Shirts</h3>
-                        <p>Custom embroidered shirts for corporate clients</p>
+                </a>
+                <a href="images/gallery3.jpg" class="gallery-item uniforms" data-sub-html="<h4>Formal Shirts Collection</h4><p>Premium formal shirts for corporate clients</p>">
+                    <img src="images/gallery3-thumb.jpg" alt="Formal Shirts Collection">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
                     </div>
-                </div>
-                
-                <!-- Gifting -->
-                <div class="gallery-item gifting">
-                    <img src="images/gallery/gift1.jpg" alt="Corporate Gift Hampers">
-                    <div class="overlay">
-                        <h3>Corporate Gift Hampers</h3>
-                        <p>Luxury gift sets for client appreciation</p>
+                </a>
+                <a href="images/gallery4.jpg" class="gallery-item events" data-sub-html="<h4>Conference Branding</h4><p>Custom branded apparel for annual conference</p>">
+                    <img src="images/gallery4-thumb.jpg" alt="Conference Branding">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
                     </div>
-                </div>
-                <div class="gallery-item gifting">
-                    <img src="images/gallery/gift2.jpg" alt="Festive Gifting">
-                    <div class="overlay">
-                        <h3>Festive Gifting</h3>
-                        <p>Custom Diwali gift boxes for employees</p>
+                </a>
+                <a href="images/gallery5.jpg" class="gallery-item gifting" data-sub-html="<h4>Executive Gift Sets</h4><p>Luxury corporate gift packages</p>">
+                    <img src="images/gallery5-thumb.jpg" alt="Executive Gift Sets">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
                     </div>
-                </div>
-                <div class="gallery-item gifting">
-                    <img src="images/gallery/gift3.jpg" alt="Branded Merchandise">
-                    <div class="overlay">
-                        <h3>Branded Merchandise</h3>
-                        <p>Custom promotional items for brand awareness</p>
+                </a>
+                <a href="images/gallery6.jpg" class="gallery-item uniforms" data-sub-html="<h4>Custom Blazers</h4><p>Tailored blazers for management team</p>">
+                    <img src="images/gallery6-thumb.jpg" alt="Custom Blazers">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
                     </div>
-                </div>
-                
-                <!-- Events -->
-                <div class="gallery-item events">
-                    <img src="images/gallery/event1.jpg" alt="Conference Uniforms">
-                    <div class="overlay">
-                        <h3>Conference Uniforms</h3>
-                        <p>Custom apparel for event staff and volunteers</p>
+                </a>
+                <a href="images/gallery7.jpg" class="gallery-item events" data-sub-html="<h4>Team Building Event</h4><p>Custom t-shirts for company outing</p>">
+                    <img src="images/gallery7-thumb.jpg" alt="Team Building Event">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
                     </div>
-                </div>
-                <div class="gallery-item events">
-                    <img src="images/gallery/event2.jpg" alt="Team Building">
-                    <div class="overlay">
-                        <h3>Team Building</h3>
-                        <p>Custom t-shirts for corporate retreat</p>
+                </a>
+                <a href="images/gallery8.jpg" class="gallery-item gifting" data-sub-html="<h4>Branded Merchandise</h4><p>Promotional items with company logo</p>">
+                    <img src="images/gallery8-thumb.jpg" alt="Branded Merchandise">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
                     </div>
-                </div>
-                <div class="gallery-item events">
-                    <img src="images/gallery/event3.jpg" alt="Product Launch">
-                    <div class="overlay">
-                        <h3>Product Launch</h3>
-                        <p>Branded apparel for launch event staff</p>
+                </a>
+                <a href="images/gallery9.jpg" class="gallery-item uniforms" data-sub-html="<h4>Complete Uniform Sets</h4><p>Shirts and trousers for retail staff</p>">
+                    <img src="images/gallery9-thumb.jpg" alt="Complete Uniform Sets">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
                     </div>
-                </div>
-            </div>
-            
-            <div class="cta-section">
-                <h3>Like What You See?</h3>
-                <p>Let's discuss how we can create something similar for your organization.</p>
-                <a href="contact.html" class="btn primary">Contact Us</a>
+                </a>
             </div>
         </div>
     </section>
+
+    <!-- Client Showcase -->
+    <section class="client-showcase bg-light">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Esteemed Clients</h2>
+                <p>Trusted by leading organizations across industries</p>
+            </div>
+            <div class="client-grid">
+                <div class="client-logo">
+                    <img src="images/client-logo1.png" alt="Client Logo">
+                </div>
+                <div class="client-logo">
+                    <img src="images/client-logo2.png" alt="Client Logo">
+                </div>
+                <div class="client-logo">
+                    <img src="images/client-logo3.png" alt="Client Logo">
+                </div>
+                <div class="client-logo">
+                    <img src="images/client-logo4.png" alt="Client Logo">
+                </div>
+                <div class="client-logo">
+                    <img src="images/client-logo5.png" alt="Client Logo">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Create Something Amazing?</h2>
+                <p>Let's discuss how we can help with your corporate uniforms and gifting needs.</p>
+                <a href="contact.html" class="btn btn-primary">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>ClassyTeez</h3>
+                    <p>Uniforms & Corporate Gifting solutions that make an impression. Quality, style, and professionalism in every product.</p>
+                    <!--
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                    -->
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Products</h3>
+                    <ul>
+                        <li><a href="products.html#tshirts">Promotional T-Shirts</a></li>
+                        <li><a href="products.html#hoodies">Hoodies</a></li>
+                        <li><a href="products.html#shirts">Formal Shirts</a></li>
+                        <li><a href="products.html#blazers">Blazers</a></li>
+                        <li><a href="products.html#gifting">Corporate Gifting</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> 97408 50480 / 93411 55280</li>
+                        <li><i class="fas fa-envelope"></i> classyteez.ans@gmail.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> #7, Shubh Arcade, Janatha Colony, Opp. RGA Tech Park, Near Carmelaram, Doddakannelli, Bengaluru - 560035</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 ClassyTeez. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
 
     <!-- WhatsApp Float -->
     <a href="https://wa.me/919740850480" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-section">
-                <h3>ClassyTeez</h3>
-                <p>Uniforms & Corporate Gifting solutions that elevate your brand identity and professionalism.</p>
-            </div>
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="products.html">Products</a></li>
-                    <li><a href="gallery.html">Gallery</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Contact Info</h3>
-                <p><i class="fas fa-phone"></i> 97408 50480 / 93411 55280</p>
-                <p><i class="fas fa-envelope"></i> classyteez.ans@gmail.com</p>
-                <p><i class="fas fa-map-marker-alt"></i> #7, Shubh Arcade, Janatha Colony, Bengaluru - 560035</p>
-            </div>
-        </div>
-        <div class="copyright">
-            <p>&copy; 2023 ClassyTeez. All Rights Reserved.</p>
-        </div>
-    </footer>
+    <script src="js/main.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.1/lightgallery.min.js"></script>
+    <script>
+        // Initialize lightGallery
+        lightGallery(document.querySelector('.gallery-grid'), {
+            selector: '.gallery-item',
+            download: false,
+            counter: false
+        });
 
-    <script src="js/script.js"></script>
+        // Gallery filtering
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Update active button
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                // Filter items
+                const filterValue = button.getAttribute('data-filter');
+                galleryItems.forEach(item => {
+                    if (filterValue === 'all' || item.classList.contains(filterValue)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
