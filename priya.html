@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>ClassyTeez - Excel Compare Tool | Uniforms & Corporate Gifting</title>
+    <!-- SheetJS Library for Excel parsing -->
+    <script src="https://cdn.sheetjs.com/xlsx-0.20.2/package/dist/xlsx.full.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: #1a1a2e;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #e6b31e;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: #e6b31e;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger .line {
+            width: 25px;
+            height: 3px;
+            background: #fff;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Page Hero */
+        .page-hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1556761175-4b46a572b786?w=1200');
+            background-size: cover;
+            background-position: center;
+            padding: 80px 0;
+            text-align: center;
+            color: #fff;
+        }
+
+        .page-hero h1 {
+            font-size: 3rem;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1rem;
+        }
+
+        /* Excel Compare Tool Section */
+        .excel-compare-section {
+            padding: 60px 0;
+            background: #f0f4f8;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            font-family: 'Playfair Display', serif;
+            color: #1a1a2e;
+        }
+
+        .section-title p {
+            color: #666;
+            max-width: 600px;
+            margin: 10px auto 0;
+        }
+
+        .card {
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            padding: 24px 28px;
+            margin-bottom: 28px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .upload-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            justify-content: space-between;
+        }
+
+        .upload-box {
+            flex: 1;
+            min-width: 260px;
+            background: #f8fafc;
+            border-radius: 20px;
+            padding: 16px 20px;
+            border: 1px dashed #cbd5e1;
+            transition: 0.2s;
+        }
+
+        .upload-box label {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 12px;
+            font-size: 1rem;
+        }
+
+        input[type="file"] {
+            width: 100%;
+            padding: 10px 0;
+        }
+
+        .badge {
+            background: #eef2ff;
+            padding: 4px 12px;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #1e40af;
+            display: inline-block;
+        }
+
+        .flex-between {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        button {
+            background: #1a1a2e;
+            border: none;
+            color: white;
+            font-weight: 500;
+            padding: 10px 20px;
+            border-radius: 40px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: 0.15s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        button:hover {
+            background: #e6b31e;
+            color: #1a1a2e;
+            transform: translateY(-2px);
+        }
+
+        button.secondary {
+            background: #f1f5f9;
+            color: #1e293b;
+            border: 1px solid #cbd5e1;
+        }
+
+        button.secondary:hover {
+            background: #e2e8f0;
+            transform: none;
+        }
+
+        select, input.search-input {
+            padding: 8px 12px;
+            border-radius: 40px;
+            border: 1px solid #cbd5e1;
+            background: white;
+            font-size: 0.85rem;
+        }
+
+        .pill-select {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .key-select {
+            background: #fef9e3;
+            padding: 12px;
+            border-radius: 20px;
+            margin-top: 16px;
+        }
+
+        .stats-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin: 20px 0 10px;
+        }
+
+        .stat-item {
+            background: #f8fafc;
+            border-radius: 20px;
+            padding: 12px 18px;
+            flex: 1;
+            text-align: center;
+            min-width: 110px;
+            border-left: 4px solid #e6b31e;
+        }
+
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #1a1a2e;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            border-radius: 20px;
+            border: 1px solid #e2e8f0;
+            background: white;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.8rem;
+        }
+
+        th {
+            background: #f1f5f9;
+            padding: 12px 8px;
+            text-align: left;
+            position: sticky;
+            top: 0;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 10px 8px;
+            border-bottom: 1px solid #eef2ff;
+        }
+
+        .diff-missing { background-color: #ffedea; }
+        .diff-new { background-color: #e6f9ed; }
+        .diff-modified { background-color: #fff3e0; }
+        .highlight-diff-col { font-weight: 600; background-color: #fef9c3; }
+
+        .loader {
+            border: 3px solid #e2e8f0;
+            border-top: 3px solid #e6b31e;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            animation: spin 0.8s linear infinite;
+            display: inline-block;
+        }
+
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        .status-msg {
+            padding: 10px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-bottom: 20px;
+            align-items: center;
+        }
+
+        .ignore-group {
+            background: #f1f5f9;
+            border-radius: 20px;
+            padding: 12px 16px;
+        }
+
+        .inline-icon {
+            margin-right: 6px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .hamburger {
+                display: flex;
+            }
+            .card { padding: 16px; }
+            .stat-number { font-size: 1.3rem; }
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a1a2e;
+            color: #fff;
+            padding: 40px 0 20px;
+        }
+
+        .footer .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 15px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+        }
+
+        .footer-section a:hover {
+            color: #e6b31e;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid #333;
+            font-size: 0.8rem;
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25d366;
+            color: white;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: 0.3s;
+            z-index: 100;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">Classy<span>Teez</span></a>
+            <div class="nav-links">
+                <a href="#">Home</a>
+                <a href="#" class="active">About</a>
+                <a href="#">Products</a>
+                <a href="#">Gallery</a>
+                <a href="#">Contact</a>
+            </div>
+            <div class="hamburger">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- About Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>About ClassyTeez</h1>
+            <p>Our story, mission, and the values that drive us</p>
+        </div>
+    </section>
+
+    <!-- Excel Compare Tool Section (Integrated) -->
+    <section class="excel-compare-section">
+        <div class="container">
+            <div class="section-title">
+                <h2><i class="fas fa-file-excel"></i> Excel Comparison Tool</h2>
+                <p>Upload two Excel files, select key columns, and get detailed difference reports — perfect for inventory, employee data, or any tabular comparison</p>
+            </div>
+
+            <!-- Upload Area -->
+            <div class="card">
+                <div class="upload-grid">
+                    <div class="upload-box">
+                        <label><i class="fas fa-file-upload"></i> File 1 (Baseline / Old)</label>
+                        <input type="file" id="file1Input" accept=".xlsx, .xls, .xlsm, .csv">
+                        <div id="file1Info" class="badge" style="margin-top: 10px;">No file selected</div>
+                    </div>
+                    <div class="upload-box">
+                        <label><i class="fas fa-file-upload"></i> File 2 (Target / New)</label>
+                        <input type="file" id="file2Input" accept=".xlsx, .xls, .xlsm, .csv">
+                        <div id="file2Info" class="badge" style="margin-top: 10px;">No file selected</div>
+                    </div>
+                </div>
+                <div class="flex-between" style="margin-top: 16px;">
+                    <div class="pill-select">
+                        <span><i class="fas fa-key"></i> <strong>Key Columns</strong> (select one or more):</span>
+                        <select id="keySelect1" multiple size="2" style="min-width: 180px;"></select>
+                        <button id="syncKeysBtn" class="secondary" title="Suggest first column as key"><i class="fas fa-sync-alt"></i> Suggest Key</button>
+                    </div>
+                    <div>
+                        <button id="compareBtn"><i class="fas fa-code-branch"></i> Run Comparison</button>
+                        <button id="exportCsvBtn" class="secondary" disabled><i class="fas fa-file-csv"></i> Export CSV</button>
+                        <button id="exportExcelBtn" class="secondary" disabled><i class="fas fa-download"></i> Export Excel</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Options Panel -->
+            <div class="card">
+                <div class="flex-between">
+                    <div><i class="fas fa-sliders-h"></i> <strong>Comparison Settings</strong></div>
+                    <div class="ignore-group">
+                        <label><i class="fas fa-ban"></i> Ignore Columns (comma):</label>
+                        <input type="text" id="ignoreColsInput" placeholder="e.g. Timestamp, ID" style="width: 220px; border-radius: 40px;">
+                    </div>
+                    <div>
+                        <label><input type="checkbox" id="caseSensitiveToggle"> Case-sensitive</label>
+                        <label style="margin-left: 12px;"><input type="checkbox" id="trimToggle" checked> Trim spaces</label>
+                    </div>
+                </div>
+                <div class="status-msg" id="globalStatusMsg" style="background:#eef2ff; margin-top: 12px;">
+                    📂 Upload two Excel files and select key column(s) to start comparison.
+                </div>
+            </div>
+
+            <!-- Summary Dashboard -->
+            <div class="card" id="summaryCard" style="display: none;">
+                <h3><i class="fas fa-chart-pie"></i> Comparison Summary</h3>
+                <div id="statsContainer" class="stats-grid"></div>
+            </div>
+
+            <!-- Detailed Results Table -->
+            <div class="card" id="resultsCard" style="display: none;">
+                <div class="filters">
+                    <input type="text" id="searchInput" placeholder="🔍 Search in key or column..." class="search-input" style="flex:2;">
+                    <select id="filterTypeSelect">
+                        <option value="ALL">All difference types</option>
+                        <option value="Missing">Missing (Only in File1)</option>
+                        <option value="New">New (Only in File2)</option>
+                        <option value="Modified">Modified values</option>
+                    </select>
+                    <select id="sortSelect">
+                        <option value="key_asc">Sort by Key (A-Z)</option>
+                        <option value="type">Sort by Diff Type</option>
+                    </select>
+                    <span id="recordCountBadge" class="badge">0 rows</span>
+                </div>
+                <div class="table-wrapper" id="diffTableWrapper">
+                    <table id="diffTable">
+                        <thead>
+                            <tr><th>Key Value(s)</th><th>Difference Type</th><th>Column Name</th><th>Value in File 1</th><th>Value in File 2</th></tr>
+                        </thead>
+                        <tbody id="diffTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-section">
+                <h3>ClassyTeez</h3>
+                <p>Uniforms & Corporate Gifting solutions that elevate your brand identity and professionalism.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Products</a></li>
+                    <li><a href="#">Gallery</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p><i class="fas fa-phone"></i> 97408 50480 / 93411 55280</p>
+                <p><i class="fas fa-envelope"></i> classyteez.ans@gmail.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> #7, Shubh Arcade, Janatha Colony, Bengaluru - 560035</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 ClassyTeez. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/919740850480" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // ---------- EXCEL COMPARISON ENGINE ----------
+        let file1Data = null, file2Data = null;
+        let file1Columns = [], file2Columns = [];
+        let selectedKeys = [];
+        let comparisonResults = [];
+        let summaryStats = {};
+
+        // DOM Elements
+        const file1Input = document.getElementById('file1Input');
+        const file2Input = document.getElementById('file2Input');
+        const file1Info = document.getElementById('file1Info');
+        const file2Info = document.getElementById('file2Info');
+        const keySelect1 = document.getElementById('keySelect1');
+        const syncKeysBtn = document.getElementById('syncKeysBtn');
+        const compareBtn = document.getElementById('compareBtn');
+        const exportCsvBtn = document.getElementById('exportCsvBtn');
+        const exportExcelBtn = document.getElementById('exportExcelBtn');
+        const ignoreColsInput = document.getElementById('ignoreColsInput');
+        const caseSensitiveToggle = document.getElementById('caseSensitiveToggle');
+        const trimToggle = document.getElementById('trimToggle');
+        const summaryCard = document.getElementById('summaryCard');
+        const resultsCard = document.getElementById('resultsCard');
+        const statsContainer = document.getElementById('statsContainer');
+        const diffTableBody = document.getElementById('diffTableBody');
+        const searchInput = document.getElementById('searchInput');
+        const filterTypeSelect = document.getElementById('filterTypeSelect');
+        const sortSelect = document.getElementById('sortSelect');
+        const recordCountBadge = document.getElementById('recordCountBadge');
+        const globalStatusMsg = document.getElementById('globalStatusMsg');
+
+        function readExcelFile(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const data = new Uint8Array(e.target.result);
+                    const workbook = XLSX.read(data, { type: 'array' });
+                    const firstSheet = workbook.Sheets[workbook.SheetNames[0]];
+                    const rows = XLSX.utils.sheet_to_json(firstSheet, { defval: "" });
+                    resolve(rows);
+                };
+                reader.onerror = reject;
+                reader.readAsArrayBuffer(file);
+            });
+        }
+
+        function updateColumnSelectors() {
+            keySelect1.innerHTML = '';
+            if (file1Columns.length) {
+                file1Columns.forEach(col => {
+                    const opt = document.createElement('option');
+                    opt.value = col; opt.textContent = col;
+                    keySelect1.appendChild(opt);
+                });
+            } else { keySelect1.innerHTML = '<option disabled>No columns</option>'; }
+            
+            if (file1Columns.length && !selectedKeys.length) {
+                selectedKeys = [file1Columns[0]];
+                updateKeySelectionsUI();
+            }
+        }
+
+        function updateKeySelectionsUI() {
+            Array.from(keySelect1.options).forEach(opt => opt.selected = selectedKeys.includes(opt.value));
+        }
+
+        function fetchSelectedKeysFromUI() {
+            const selected = [];
+            for (let opt of keySelect1.options) if (opt.selected) selected.push(opt.value);
+            if (selected.length === 0 && file1Columns.length) selected.push(file1Columns[0]);
+            return selected;
+        }
+
+        function normalizeValue(val, trimSpaces, caseSensitive) {
+            if (val === undefined || val === null) return '';
+            let str = String(val);
+            if (trimSpaces) str = str.trim();
+            if (!caseSensitive) str = str.toLowerCase();
+            return str;
+        }
+
+        function getCompositeKey(row, keys, trimSpaces, caseSensitive) {
+            return keys.map(k => normalizeValue(row[k], trimSpaces, caseSensitive)).join('|¤|');
+        }
+
+        function runComparison() {
+            if (!file1Data || !file2Data) { globalStatusMsg.innerHTML = '❌ Please upload both files before comparing.'; return false; }
+            const keys = fetchSelectedKeysFromUI();
+            if (keys.length === 0) { globalStatusMsg.innerHTML = '❌ Please select at least one key column.'; return false; }
+            selectedKeys = keys;
+            updateKeySelectionsUI();
+
+            const ignoreColsRaw = ignoreColsInput.value.split(',').map(s => s.trim()).filter(s => s);
+            const caseSensitive = caseSensitiveToggle.checked;
+            const trimSpaces = trimToggle.checked;
+
+            const map1 = new Map(), map2 = new Map();
+            for (const row of file1Data) {
+                const key = getCompositeKey(row, selectedKeys, trimSpaces, caseSensitive);
+                map1.set(key, row);
+            }
+            for (const row of file2Data) {
+                const key = getCompositeKey(row, selectedKeys, trimSpaces, caseSensitive);
+                map2.set(key, row);
+            }
+
+            const allKeys = new Set([...map1.keys(), ...map2.keys()]);
+            const allColumns = new Set([...file1Columns, ...file2Columns]);
+            const columnsToCompare = [...allColumns].filter(col => !ignoreColsRaw.includes(col));
+
+            const diffRows = [];
+            let matchingCount = 0, missingCount = 0, newCount = 0, modifiedRecords = 0, totalMismatchFields = 0;
+
+            for (const key of allKeys) {
+                const row1 = map1.get(key);
+                const row2 = map2.get(key);
+                if (row1 && !row2) {
+                    missingCount++;
+                    for (const col of columnsToCompare) {
+                        diffRows.push({ keyStr: key, diffType: 'Missing', column: col, oldVal: row1[col] !== undefined ? row1[col] : '', newVal: '(absent)' });
+                    }
+                } 
+                else if (!row1 && row2) {
+                    newCount++;
+                    for (const col of columnsToCompare) {
+                        diffRows.push({ keyStr: key, diffType: 'New', column: col, oldVal: '(absent)', newVal: row2[col] !== undefined ? row2[col] : '' });
+                    }
+                }
+                else if (row1 && row2) {
+                    let hasDiff = false;
+                    for (const col of columnsToCompare) {
+                        let val1 = row1[col] !== undefined ? row1[col] : '';
+                        let val2 = row2[col] !== undefined ? row2[col] : '';
+                        let norm1 = normalizeValue(val1, trimSpaces, caseSensitive);
+                        let norm2 = normalizeValue(val2, trimSpaces, caseSensitive);
+                        if (norm1 !== norm2) {
+                            hasDiff = true;
+                            totalMismatchFields++;
+                            diffRows.push({ keyStr: key, diffType: 'Modified', column: col, oldVal: val1, newVal: val2 });
+                        }
+                    }
+                    if (hasDiff) modifiedRecords++;
+                    else matchingCount++;
+                }
+            }
+
+            const addedCols = file2Columns.filter(c => !file1Columns.includes(c) && !ignoreColsRaw.includes(c));
+            const removedCols = file1Columns.filter(c => !file2Columns.includes(c) && !ignoreColsRaw.includes(c));
+
+            summaryStats = {
+                totalFile1: file1Data.length, totalFile2: file2Data.length,
+                matching: matchingCount, missing: missingCount, newRecords: newCount,
+                modified: modifiedRecords, totalMismatches: totalMismatchFields,
+                addedColumns: addedCols, removedColumns: removedCols
+            };
+            comparisonResults = diffRows;
+            renderSummary();
+            renderDiffTable();
+            resultsCard.style.display = 'block';
+            summaryCard.style.display = 'block';
+            exportCsvBtn.disabled = false;
+            exportExcelBtn.disabled = false;
+            globalStatusMsg.innerHTML = '✅ Comparison completed successfully. Use filters, search & export.';
+            return true;
+        }
+
+        function renderSummary() {
+            statsContainer.innerHTML = `
+                <div class="stat-item"><div class="stat-number">${summaryStats.totalFile1}</div><div>File 1 Records</div></div>
+                <div class="stat-item"><div class="stat-number">${summaryStats.totalFile2}</div><div>File 2 Records</div></div>
+                <div class="stat-item"><div class="stat-number">${summaryStats.matching}</div><div>✅ Matching</div></div>
+                <div class="stat-item"><div class="stat-number">${summaryStats.missing}</div><div>⚠️ Missing (F1 only)</div></div>
+                <div class="stat-item"><div class="stat-number">${summaryStats.newRecords}</div><div>🆕 New (F2 only)</div></div>
+                <div class="stat-item"><div class="stat-number">${summaryStats.modified}</div><div>✏️ Modified Keys</div></div>
+                <div class="stat-item"><div class="stat-number">${summaryStats.totalMismatches}</div><div>📊 Field mismatches</div></div>
+            `;
+            const schemaDiv = document.createElement('div');
+            schemaDiv.style.marginTop = '12px';
+            schemaDiv.className = 'badge';
+            schemaDiv.innerHTML = `<i class="fas fa-columns"></i> ➕ Added columns: ${summaryStats.addedColumns.length ? summaryStats.addedColumns.join(', ') : 'None'} &nbsp;|&nbsp; ➖ Removed columns: ${summaryStats.removedColumns.length ? summaryStats.removedColumns.join(', ') : 'None'}`;
+            if (!statsContainer.parentElement.querySelector('.schema-badge')) {
+                schemaDiv.classList.add('schema-badge');
+                statsContainer.parentElement.appendChild(schemaDiv);
+            } else {
+                statsContainer.parentElement.querySelector('.schema-badge').innerHTML = schemaDiv.innerHTML;
+            }
+        }
+
+        function renderDiffTable() {
+            let filtered = [...comparisonResults];
+            const searchTerm = searchInput.value.toLowerCase();
+            const filterType = filterTypeSelect.value;
+            if (searchTerm) filtered = filtered.filter(r => r.keyStr.toLowerCase().includes(searchTerm) || r.column.toLowerCase().includes(searchTerm));
+            if (filterType !== 'ALL') filtered = filtered.filter(r => r.diffType === filterType);
+            if (sortSelect.value === 'key_asc') filtered.sort((a,b) => a.keyStr.localeCompare(b.keyStr));
+            if (sortSelect.value === 'type') filtered.sort((a,b) => a.diffType.localeCompare(b.diffType));
+            
+            recordCountBadge.innerText = `${filtered.length} rows`;
+            diffTableBody.innerHTML = '';
+            if (filtered.length === 0) { diffTableBody.innerHTML = '<tr><td colspan="5">No differences match criteria.</td></tr>'; return; }
+            for (const diff of filtered) {
+                const row = document.createElement('tr');
+                let diffClass = diff.diffType === 'Missing' ? 'diff-missing' : (diff.diffType === 'New' ? 'diff-new' : 'diff-modified');
+                row.className = diffClass;
+                row.innerHTML = `
+                    <td>${escapeHtml(diff.keyStr)}</td>
+                    <td>${diff.diffType}</td>
+                    <td class="${diff.diffType === 'Modified' ? 'highlight-diff-col' : ''}">${escapeHtml(diff.column)}</td>
+                    <td>${escapeHtml(String(diff.oldVal === undefined || diff.oldVal === '' ? '(blank)' : diff.oldVal))}</td>
+                    <td>${escapeHtml(String(diff.newVal === undefined || diff.newVal === '' ? '(blank)' : diff.newVal))}</td>
+                `;
+                diffTableBody.appendChild(row);
+            }
+        }
+        function escapeHtml(str) { return str.replace(/[&<>]/g, function(m) { if (m === '&') return '&amp;'; if (m === '<') return '&lt;'; if (m === '>') return '&gt;'; return m; }); }
+
+        function exportToCSV() {
+            if (!comparisonResults.length) { alert('No data to export'); return; }
+            const headers = ['Key Value','Difference Type','Column Name','Value in File1','Value in File2'];
+            const rows = comparisonResults.map(r => [r.keyStr, r.diffType, r.column, r.oldVal, r.newVal]);
+            const csvContent = [headers, ...rows].map(row => row.map(cell => `"${String(cell).replace(/"/g, '""')}"`).join(',')).join('\n');
+            const blob = new Blob(["\uFEFF" + csvContent], { type: 'text/csv' });
+            const link = document.createElement('a'); link.href = URL.createObjectURL(blob); link.download = 'comparison_report.csv'; link.click(); URL.revokeObjectURL(blob);
+        }
+        function exportToExcel() {
+            if (!comparisonResults.length) { alert('No data'); return; }
+            const wsData = [['Key Value','Difference Type','Column Name','Value in File1','Value in File2']];
+            comparisonResults.forEach(d => wsData.push([d.keyStr, d.diffType, d.column, d.oldVal, d.newVal]));
+            const ws = XLSX.utils.aoa_to_sheet(wsData); const wb = XLSX.utils.book_new(); XLSX.utils.book_append_sheet(wb, ws, 'Comparison'); XLSX.writeFile(wb, `comparison_${Date.now()}.xlsx`);
+        }
+
+        async function handleFile1(file) {
+            if (!file) { file1Data = null; file1Columns = []; file1Info.innerText = 'No file'; updateColumnSelectors(); return; }
+            globalStatusMsg.innerHTML = '<div class="loader"></div> Loading File 1...';
+            try { const data = await readExcelFile(file); file1Data = data; file1Columns = data.length ? Object.keys(data[0]) : []; file1Info.innerText = `✅ ${file.name} (${data.length} rows)`; updateColumnSelectors(); globalStatusMsg.innerHTML = 'File 1 loaded. Select keys and compare.'; } 
+            catch(e) { globalStatusMsg.innerHTML = '❌ Error reading File 1'; file1Data = null; }
+        }
+        async function handleFile2(file) {
+            if (!file) { file2Data = null; file2Columns = []; file2Info.innerText = 'No file'; return; }
+            globalStatusMsg.innerHTML = '<div class="loader"></div> Loading File 2...';
+            try { const data = await readExcelFile(file); file2Data = data; file2Columns = data.length ? Object.keys(data[0]) : []; file2Info.innerText = `✅ ${file.name} (${data.length} rows)`; globalStatusMsg.innerHTML = 'File 2 loaded. Ready.'; } 
+            catch(e) { globalStatusMsg.innerHTML = '❌ Error reading File 2'; file2Data = null; }
+        }
+
+        file1Input.addEventListener('change', (e) => handleFile1(e.target.files[0]));
+        file2Input.addEventListener('change', (e) => handleFile2(e.target.files[0]));
+        syncKeysBtn.addEventListener('click', () => { if (file1Columns.length) { selectedKeys = [file1Columns[0]]; updateKeySelectionsUI(); globalStatusMsg.innerText = 'Key column suggested.'; } else globalStatusMsg.innerText = 'Load File 1 first.'; });
+        compareBtn.addEventListener('click', runComparison);
+        exportCsvBtn.addEventListener('click', exportToCSV);
+        exportExcelBtn.addEventListener('click', exportToExcel);
+        searchInput.addEventListener('input', renderDiffTable);
+        filterTypeSelect.addEventListener('change', renderDiffTable);
+        sortSelect.addEventListener('change', renderDiffTable);
+
+        // Mobile hamburger toggle
+        document.querySelector('.hamburger')?.addEventListener('click', function() {
+            document.querySelector('.nav-links')?.classList.toggle('show');
+        });
+    </script>
+    <style>
+        .nav-links.show { display: flex; flex-direction: column; position: absolute; top: 70px; left: 0; right: 0; background: #1a1a2e; padding: 20px; gap: 15px; }
+        @media (max-width: 768px) { .nav-links { display: none; } .hamburger { display: flex; } }
+    </style>
+</body>
+</html>
